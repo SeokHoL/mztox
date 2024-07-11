@@ -14,7 +14,7 @@ public class SignupService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-    private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper; //DTO(Data Transfer Object)와 엔티티(Entity) 간의 변환을 쉽게 하기 위해 사용되는 라이브러리
 
     public void signup(SignupDto signupDto) {
         Members member = modelMapper.map(signupDto, Members.class);

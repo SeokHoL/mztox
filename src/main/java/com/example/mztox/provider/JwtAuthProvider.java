@@ -32,13 +32,15 @@ public class JwtAuthProvider {
     private final UserDetailsService userDetailsService;
 
     public String createToken(long userPk, String email) {
-        Date date = new Date();
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + (1000L * 60 * 60 * 12)); // 12시간 유효기간
+
         return Jwts.builder()
-                .setHeaderParam("typ", "JWT")
-                .setSubject("accesstoken")
-                .setExpiration(new Date(date.getTime() + (1000L * 60 * 60 * 12)))
+                .setSubject(email)
                 .claim("userPk", userPk)
                 .claim("email", email)
+                .setIssuedAt(now)
+                .setExpiration(validity)
                 .signWith(SignatureAlgorithm.HS256, atSecretKey)
                 .compact();
     }

@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
+//회원 가입 요청 시 클라이언트가 제공하는 회원 정보를 담는 DTO
+
 @Setter
 @Getter
 @NoArgsConstructor

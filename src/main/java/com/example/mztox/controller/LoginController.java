@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
-@Validated
+//@RequestMapping("/api")
+@Validated //유효성 검사를 활성화
 public class LoginController {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -26,14 +26,19 @@ public class LoginController {
     private final JwtAuthProvider jwtProvider;
 
     @PostMapping("/signin")
+    //클라이언트로부터JSON을 -> LoginDto 객체로 변환
     public ResponseEntity<AuthenticationDto> appLogin(@Valid @RequestBody LoginDto loginDto) throws Exception {
-        logger.info("Signin attempt for email: {}", loginDto.getEmail());
         AuthenticationDto authentication = loginService.loginService(loginDto);
-        String token = jwtProvider.createToken(authentication.getId(), authentication.getEmail());
-        logger.info("Signin successful for email: {}. Token generated.", loginDto.getEmail());
 
+        // JWT 토큰 생성
+        String token = jwtProvider.createToken(authentication.getId(), authentication.getEmail());
+
+        // DTO에 토큰 설정 , 생성된 토큰을 AuthenticationDto 객체에 설정
+        authentication.setToken(token);
+
+        // 응답 헤더와 본문에 토큰 포함
         return ResponseEntity.ok()
-                .header("accesstoken", token)
+                .header("accessToken", token)
                 .body(authentication);
     }
 }

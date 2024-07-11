@@ -24,23 +24,20 @@ public class LoginService {
     private final ModelMapper modelMapper;
 
     public AuthenticationDto loginService(LoginDto loginDto) {
-        logger.info("Login attempt for email: {}", loginDto.getEmail());
+
         Members member = memberRepository.findByEmail(loginDto.getEmail())
                 .orElseThrow(() -> {
-                    logger.error("User not found for email: {}", loginDto.getEmail());
+
                     return new UserNotFoundException("User Not Found");
                 });
 
-        logger.info("User found: {}", member.getEmail());
-        logger.info("Entered password: {}", loginDto.getPassword());
-        logger.info("Stored password: {}", member.getPassword());
+
 
         if (!passwordEncoder.matches(loginDto.getPassword(), member.getPassword())) {
-            logger.error("Password mismatch for email: {}", loginDto.getEmail());
             throw new ForbiddenException("Passwords do not match");
         }
 
-        logger.info("Login successful for email: {}", loginDto.getEmail());
         return modelMapper.map(member, AuthenticationDto.class);
+        //modelMapper를 사용하여 Members 엔티티를 -> AuthenticationDto로 변환하여 반환
     }
 }
