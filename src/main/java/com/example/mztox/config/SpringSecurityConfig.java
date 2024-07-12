@@ -71,7 +71,7 @@ public class SpringSecurityConfig {
                 //특정 엔드포인트에 대한 접근 권한을 설정
                 .authorizeHttpRequests(authorize -> authorize
                         ///signup, /signin/**, /exception/** 경로는 모든 사용자에게 허용
-                        .requestMatchers("/signup", "/signin/**", "/main/**").permitAll()
+                        .requestMatchers("/signup", "/login/**", "/main/**").permitAll()
                         //그 외의 모든 요청은 "USER" 역할을 가진 사용자만 접근할 수 있음
                         .anyRequest().hasRole("USER")
                 )

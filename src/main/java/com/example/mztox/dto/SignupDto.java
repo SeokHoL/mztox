@@ -13,8 +13,8 @@ import lombok.*;
 @AllArgsConstructor
 public class SignupDto {
 
-    @NotBlank(message = "'email' is a required input value")
-    @Email(message = "It is not in email format")
+    @NotBlank(message = "'email' is a required input value") //빈칸을 허용하지않음
+    @Email(message = "It is not in email format") //이메일 형식이어야함 ex) @gmail.com
     private String email;
 
     @NotBlank(message = "'password' is a required input value")

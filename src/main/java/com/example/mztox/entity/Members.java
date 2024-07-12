@@ -32,7 +32,7 @@ public class Members {
     @Column(length = 100, nullable = false)
     private String password;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String name;
 
     @Column(length = 100, nullable = false)
