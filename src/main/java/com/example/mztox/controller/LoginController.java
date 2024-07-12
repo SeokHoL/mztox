@@ -34,11 +34,14 @@ public class LoginController {
         String token = jwtProvider.createToken(authentication.getId(), authentication.getEmail());
 
         // DTO에 토큰 설정 , 생성된 토큰을 AuthenticationDto 객체에 설정
-        authentication.setToken(token);
+//        authentication.setToken(token);
 
         // 응답 헤더와 본문에 토큰 포함
+        //ResponseEntity는 pring Framework에서 HTTP 응답을 표현하는 클래스로,
+        // HTTP 상태 코드, 헤더, 본문 데이터를 포함할 수 있는 응답 객체를 생성하는 데 사용
         return ResponseEntity.ok()
                 .header("accessToken", token)
-                .body(authentication);
+                .body(authentication);// 본문에 토큰
+//                 .build();
     }
 }
