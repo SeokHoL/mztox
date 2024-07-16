@@ -13,16 +13,16 @@ import lombok.*;
 @AllArgsConstructor
 public class SignupDto {
 
-    @NotBlank(message = "'email' is a required input value") //빈칸을 허용하지않음
-    @Email(message = "It is not in email format") //이메일 형식이어야함 ex) @gmail.com
+    @NotBlank(message = "email은 필수 작성입니다.") //빈칸을 허용하지않음
+    @Email(message = "올바른 이메일형식 이어야 합니다. ex)test@gmail.com") //이메일 형식이어야함 ex) @gmail.com
     private String email;
 
-    @NotBlank(message = "'password' is a required input value")
+    @NotBlank(message = "password은 필수 작성입니다.")
     private String password;
 
-    @NotBlank(message = "'name' is a required input value")
+    @NotBlank(message = "name은 필수 작성입니다.")
     private String name;
 
-    @NotBlank(message = "'mobile' is a required input value")
+    @NotBlank(message = "mobile은 필수 작성입니다.")
     private String mobile;
 }

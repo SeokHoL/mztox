@@ -13,9 +13,8 @@ public class LoginDto {
     private String email;
     private String password;
 
-
-     //LoginDto를 Members 엔티티로 변환하는 메서드
-    public Members toEntity(){
+    // LoginDto를 Members 엔티티로 변환하는 메서드
+    public Members toEntity() {
         return Members.builder()
                 .email(email)
                 .password(password)

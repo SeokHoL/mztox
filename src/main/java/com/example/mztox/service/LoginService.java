@@ -5,6 +5,7 @@ import com.example.mztox.dto.LoginDto;
 import com.example.mztox.entity.Members;
 import com.example.mztox.exception.ForbiddenException;
 import com.example.mztox.exception.UserNotFoundException;
+import com.example.mztox.provider.JwtAuthProvider;
 import com.example.mztox.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,6 +23,7 @@ public class LoginService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
+    private final JwtAuthProvider jwtAuthProvider;
 
     public AuthenticationDto loginService(LoginDto loginDto) {
 
@@ -40,4 +42,6 @@ public class LoginService {
         return modelMapper.map(member, AuthenticationDto.class);
         //modelMapper를 사용하여 Members 엔티티를 -> AuthenticationDto로 변환하여 반환
     }
+
+
 }

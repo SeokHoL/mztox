@@ -33,6 +33,9 @@ public class SignupController {
     public ResponseEntity<Void> signup(@Valid @RequestBody SignupDto signupDto) {
         signupService.signup(signupDto);
         return ResponseEntity.ok().build();
+        //ResponseEntity는 Spring Framework에서 제공하는 클래스이며,
+        // HTTP 응답의 전체적인 구성을 나타내는 데 사용됩니다.
+        // 이를 사용하면 상태 코드(200,401,403,500등), 헤더(header), 본문(body)을 포함하는 응답을 클라이언트에 반환할 수 있습니다.
     }
     /*유효성 검사가 실패하면 MethodArgumentNotValidException 예외가 자동으로 발생하고,
     이 예외를 처리하는 핸들러 메서드(handleValidationExceptions)가 자동으로 호출됩니다.

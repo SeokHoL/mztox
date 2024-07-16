@@ -23,7 +23,7 @@ public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     private final LoginService loginService; // 로그인 서비스 빈을 주입받음
-    private final JwtAuthProvider jwtProvider; // JWT 인증 제공자 빈을 주입받음
+    private final JwtAuthProvider jwtAuthProvider; // JWT 인증 제공자 빈을 주입받음
 
     @PostMapping("/login") // HTTP POST 요청을 "/login" 경로로 매핑
     public ResponseEntity<?> appLogin(@Valid @RequestBody LoginDto loginDto) {
@@ -32,25 +32,28 @@ public class LoginController {
             AuthenticationDto authentication = loginService.loginService(loginDto);
 
             // JWT 토큰 생성
-            String token = jwtProvider.createToken(authentication.getId(), authentication.getEmail());
+            String token = jwtAuthProvider.createToken(authentication.getId(), authentication.getEmail());
 
             // 응답 헤더에 토큰 포함하여 반환, 본문은 비워둠
             return ResponseEntity.ok()
                     .header("accessToken", token)
-                    .body("Login successful");
-//                    .build();
+                    .build();
         } catch (UserNotFoundException e) {
             // 사용자를 찾지 못한 경우
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(e.getMessage()); // 401 상태 코드와 예외 메시지 반환
+                    .build();
+//                    .body(e.getMessage()); // 401 상태 코드와 예외 메시지 반환
         } catch (ForbiddenException e) {
             // 비밀번호가 일치하지 않는 경우
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(e.getMessage()); // 403 상태 코드와 예외 메시지 반환
+                    .build();
+//                    .body(e.getMessage()); // 403 상태 코드와 예외 메시지 반환
         } catch (Exception e) {
             // 기타 예상치 못한 오류 발생 시
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Unexpected error occurred"); // 500 상태 코드와 일반 오류 메시지 반환
+                    .build();
+//                    .body("Unexpected error occurred"); // 500 상태 코드와 일반 오류 메시지 반환
         }
     }
+
 }
