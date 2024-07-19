@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 @Entity
 @DynamicUpdate // 업데이트 시 변경된 필드만 반영
 @DynamicInsert // 삽입 시 null이 아닌 필드만 반영
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // 삽입 시 null이 아닌 필드만 반영
-@EntityListeners(AuditingEntityListener.class) // JPA Auditing 기능 활성화
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class) // JPA Auditing 기능 활성화,엔티티의 생성 및 수정 시간을 자동으로 관리하기 위함
 public class Members {
 
     @Id

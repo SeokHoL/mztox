@@ -48,8 +48,8 @@ public class SignupController {
         //HashMap은 클래스임. Map 인터페이스를 구현하는 클래스다.
         Map<String, String> errors = new HashMap<>(); // 유효성 검증 실패로 발생한 오류 메시지를 저장할 맵을 생성합니다.
         ex.getBindingResult().getAllErrors().forEach((error) -> { // 유효성 검증 오류 리스트를 순회합니다.
-            String fieldName = ((FieldError) error).getField(); // 오류가 발생한 필드 이름을 가져옵니다.
-            String errorMessage = error.getDefaultMessage(); // 유효성 검증 실패 시 설정한 기본 오류 메시지를 가져옵니다.
+            String fieldName = ((FieldError) error).getField(); // 오류가 발생한 필드 이름을 가져옵니다. DTO필드랑 자동매핑됨.
+            String errorMessage = error.getDefaultMessage(); // 유효성 검증 실패 시 설정한 기본 오류 메시지를 가져옵니다. DTO필드랑 자동매핑됨.
             errors.put(fieldName, errorMessage); // 필드 이름을 키로, 오류 메시지를 값으로 하여 맵에 추가합니다.
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors); // HTTP 상태 코드 400 (Bad Request)와 함께 오류 메시지를 응답 본문으로 반환합니다.

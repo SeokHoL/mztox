@@ -14,6 +14,7 @@ public class AuthenticationDto {
 
     private Long id;
     private String email;
+    private String name;
 //    private String token;
 
 

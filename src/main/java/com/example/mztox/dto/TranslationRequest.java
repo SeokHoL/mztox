@@ -7,5 +7,6 @@ public class
 TranslationRequest {
 
     private String slang;
+    private String email;
 
 }

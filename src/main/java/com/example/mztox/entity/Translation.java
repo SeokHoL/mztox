@@ -29,6 +29,9 @@ public class Translation {
     private long id;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String slang;
 
     @Column(nullable = false)
@@ -42,7 +45,8 @@ public class Translation {
     private LocalDateTime lastModifiedDate;
 
     @Builder
-    public Translation(String slang, String standard){
+    public Translation(String email, String slang, String standard){
+        this.email = email;
         this.slang = slang;
         this.standard = standard;
     }

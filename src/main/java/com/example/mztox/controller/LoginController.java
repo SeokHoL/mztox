@@ -15,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor // 생성자를 통해 의존성을 주입받기 위한 Lombok 어노테이션
 @RestController // 이 클래스가 RESTful 웹 서비스의 컨트롤러임을 나타냄
 @Validated // 유효성 검사를 활성화
@@ -34,10 +37,16 @@ public class LoginController {
             // JWT 토큰 생성
             String token = jwtAuthProvider.createToken(authentication.getId(), authentication.getEmail());
 
-            // 응답 헤더에 토큰 포함하여 반환, 본문은 비워둠
+            // 응답 데이터 준비
+            //Map
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("name", authentication.getName());
+
+            // 응답 헤더에 토큰 포함하여 반환
             return ResponseEntity.ok()
-                    .header("accessToken", token)
-                    .build();
+                    .header("accesstoken", token)
+                    .body(responseBody);
+//                    .build();
         } catch (UserNotFoundException e) {
             // 사용자를 찾지 못한 경우
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
