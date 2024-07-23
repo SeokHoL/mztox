@@ -1,12 +1,13 @@
 package com.example.mztox.controller;
 
 import com.example.mztox.dto.TranslationRequest;
+import com.example.mztox.provider.JwtAuthProvider;
 import com.example.mztox.service.TranslationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -18,17 +19,17 @@ import java.util.Map;
 public class TranslationController {
 
     private final TranslationService translationService;
+    private final JwtAuthProvider jwtAuthProvider;
 
     @PostMapping("/main")
-    //@RequestBody -> HTTP 요청 본문을 TranslationRequest 객체로 변환합니다.
-    public ResponseEntity<Map<String, String>> translate(@RequestBody TranslationRequest translationRequest){
-        String standard = translationService.translateSlang(translationRequest);
+    public ResponseEntity<Map<String,String>> translate(@RequestHeader("accesstoken") String accesstoken, @RequestBody TranslationRequest translationRequest) {
+        // 토큰에서 이메일 추출
+        String emailFromToken = jwtAuthProvider.getEmailFromToken(accesstoken);
 
-        //응답형태를 json으로 만들기위해 Map을 사용
-//        return ResponseEntity.ok(standard); -> 이렇게하면 단순 text형태로 응답이 감.
-        Map<String, String> responseBody = new HashMap<>();
-        responseBody.put("standard", standard);
+        String standard = translationService.translateSlang(translationRequest, emailFromToken);
+        Map<String, String> response = new HashMap<>();
+        response.put("standard", standard);
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity.ok(response);
     }
 }
