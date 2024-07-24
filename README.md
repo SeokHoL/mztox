@@ -52,11 +52,11 @@
 
 ### 1. MZ언어를 표준어로 번역
 사용자가 MZ언어를 입력하면 표준어로 번역하고, 사용자email에 따라 DB에 저장합니다.    
-[코드 보러가기](#)
+[코드 보러가기](https://github.com/SeokHoL/mztox/blob/master/src/main/java/com/example/mztox/controller/TranslationController.java)
 
 ### 2. 로그인을 하면 JWT토큰을 발급(1시간동안유지)
 사용자가 로그인을 하면 JWT토큰을 발급하여 보안을 강화하고 1시간동안 세션을 관리합니다.      
-[코드 보러가기](#)
+[코드 보러가기](https://github.com/SeokHoL/mztox/blob/master/src/main/java/com/example/mztox/provider/JwtAuthProvider.java#L42)
 
 ## 📕 시현 이미지
 
