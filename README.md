@@ -33,9 +33,8 @@
 - vue.js
 
 ### 3. AI
--python3
--flask
-
+- python3
+- flask
 
 ## 📊 Structure&API명세서
 
