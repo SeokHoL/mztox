@@ -45,5 +45,5 @@
 
 <details>
   <summary>Structure</summary>
-  
+  ![mztox](https://github.com/user-attachments/assets/3bc04ad6-f3fa-4855-98f0-c7f19bcb4491)
 </details>
