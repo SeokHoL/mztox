@@ -45,7 +45,7 @@
 
 <details>
   <summary>API명세서</summary>
-  <img src="https://github.com/user-attachments/assets/48cca259-8f3c-4d73-a8c4-514f362f5721" >
+  <img src="https://github.com/user-attachments/assets/edf38446-d38d-46d0-ac47-c9dbb13bfeb8" >
 </details>
 
 ## 🔑 핵심기능
