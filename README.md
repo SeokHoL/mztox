@@ -59,3 +59,10 @@
 사용자가 방언을 입력하면 표준어로 번역해줍니다.  
 사용자가 입력한 방언 및 번역한 표준어를 DB에 저장합니다.   
 [코드 보러가기](#)
+
+## 📕 기타 자료
+
+### 기획문서
+[MyLittleTrip - Notion](https://www.notion.so/your-notion-link)
+
+
