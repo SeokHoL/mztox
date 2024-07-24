@@ -19,18 +19,22 @@
 | [오상현]| AI |
 
 ## 3. 역할 분담
-- **이석호**: Springboot, SpringSecurity, SrpingJWT를 사용하여 로그인, 회원가입 및 번역 기능구현
--
+- Springboot, SpringSecurity, SrpingJWT를 사용하여 로그인, 회원가입 및 번역 기능구현
+>
 ## 🛠 사용 기술
 
 ### 1. Back-end
-- python3
-- Django
-- Django-rest-framework
+- Java
+- Springboot
+- SpirngSecurity, SpirngJWT
 
 ### 2. Front-end
-- React.js
-- Node.js
+- Javascript
+- vue.js
+
+### 3. AI
+-python3
+
 
 ## 📊 ERD & Structure
 
