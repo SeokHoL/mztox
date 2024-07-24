@@ -51,18 +51,17 @@
 ## 🔑 핵심기능
 
 ### 1. MZ언어를 표준어로 번역
-사용자가 MZ언어를 입력하면 표준어로 번역하고,  
-사용자ID에 따라 DB에 저장합니다.    
-
-
-### 2. 지역 방언 번역
-사용자가 방언을 입력하면 표준어로 번역하고,    
-사용자ID에 따라 DB에 저장합니다.    
+사용자가 MZ언어를 입력하면 표준어로 번역하고, 사용자email에 따라 DB에 저장합니다.    
 [코드 보러가기](#)
 
-## 📕 기타 자료
+### 2. 로그인을 하면 JWT토큰을 발급(1시간동안유지)
+사용자가 로그인을 하면 JWT토큰을 발급하여 보안을 강화하고 1시간동안 세션을 관리합니다.      
+[코드 보러가기](#)
 
-### 기획문서
-[MyLittleTrip - Notion](https://www.notion.so/your-notion-link)
+## 📕 시현 이미지
 
+<details>
+  <summary>시현 이미지</summary>
+  <img src="https://github.com/user-attachments/assets/48cca259-8f3c-4d73-a8c4-514f362f5721" >
+</details>
 
