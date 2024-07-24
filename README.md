@@ -45,5 +45,5 @@
 
 <details>
   <summary>Structure</summary>
-  <p>Structure 관련 내용</p>
+  
 </details>
