@@ -20,4 +20,26 @@
 
 ## 3. 역할 분담
 - **이석호**: Springboot, SpringSecurity, SrpingJWT를 사용하여 로그인, 회원가입 및 번역 기능구현
-- 
+-
+## 🛠 사용 기술
+
+### 1. Back-end
+- python3
+- Django
+- Django-rest-framework
+
+### 2. Front-end
+- React.js
+- Node.js
+
+## 📊 ERD & Structure
+
+<details>
+  <summary>ERD</summary>
+  <p>ERD 관련 내용</p>
+</details>
+
+<details>
+  <summary>Structure</summary>
+  <p>Structure 관련 내용</p>
+</details>
