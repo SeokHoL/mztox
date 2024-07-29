@@ -30,9 +30,14 @@ public class SignupController {
     // 이 객체에 정의된 유효성 검사 규칙을 적용하여 입력 데이터가 올바른지 검증한다.
     //@RequestBody -> HTTP 요청의 본문에 JSON 형식으로 데이터를 보내면 ->Java 객체로 변환
     //@Valid 어노테이션은 해당 객체에 대해 유효성 검사를 수행하도록 지시
-    public ResponseEntity<Void> signup(@Valid @RequestBody SignupDto signupDto) {
-        signupService.signup(signupDto);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> signup(@Valid @RequestBody SignupDto signupDto) throws Exception {
+        try {
+            signupService.signup(signupDto);
+            return ResponseEntity.ok().build();
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"msg\": \"" + e.getMessage() + "\"}");
+        }
+
         //ResponseEntity는 Spring Framework에서 제공하는 클래스이며,
         // HTTP 응답의 전체적인 구성을 나타내는 데 사용됩니다.
         // 이를 사용하면 상태 코드(200,401,403,500등), 헤더(header), 본문(body)을 포함하는 응답을 클라이언트에 반환할 수 있습니다.

@@ -2,10 +2,12 @@ package com.example.mztox.controller;
 
 import com.example.mztox.dto.AuthenticationDto;
 import com.example.mztox.dto.LoginDto;
+import com.example.mztox.dto.TranslationResponse;
 import com.example.mztox.exception.ForbiddenException;
 import com.example.mztox.exception.UserNotFoundException;
 import com.example.mztox.provider.JwtAuthProvider;
 import com.example.mztox.service.LoginService;
+import com.example.mztox.service.TranslationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @RequiredArgsConstructor // 생성자를 통해 의존성을 주입받기 위한 Lombok 어노테이션
 @RestController // 이 클래스가 RESTful 웹 서비스의 컨트롤러임을 나타냄
@@ -27,6 +30,7 @@ public class LoginController {
 
     private final LoginService loginService; // 로그인 서비스 빈을 주입받음
     private final JwtAuthProvider jwtAuthProvider; // JWT 인증 제공자 빈을 주입받음
+    private final TranslationService translationService;
 
     @PostMapping("/login") // HTTP POST 요청을 "/login" 경로로 매핑
     public ResponseEntity<?> appLogin(@Valid @RequestBody LoginDto loginDto) {
@@ -37,10 +41,16 @@ public class LoginController {
             // JWT 토큰 생성
             String token = jwtAuthProvider.createToken(authentication.getId(), authentication.getEmail());
 
+            //최근 번역기록을 가져옴.
+            TranslationResponse translations = translationService.getRecentTranslations(authentication.getEmail());
+
             // 응답 데이터 준비
             //Map
-            Map<String, String> responseBody = new HashMap<>();
+            Map<String, Object> responseBody = new HashMap<>();
             responseBody.put("name", authentication.getName());
+            responseBody.put("itemLen", translations.getItemLen());
+            responseBody.put("items", translations.getItems()); // slang과 standard 쌍으로 구성된 리스트
+
 
             // 응답 헤더에 토큰 포함하여 반환
             return ResponseEntity.ok()

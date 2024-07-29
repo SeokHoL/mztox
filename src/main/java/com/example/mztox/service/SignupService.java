@@ -17,7 +17,12 @@ public class SignupService {
     private final ModelMapper modelMapper; // DTO와 엔티티 간의 변환을 위한 라이브러리를 주입받습니다.
 
     // 회원 가입 메서드
-    public void signup(SignupDto signupDto) {
+    public void signup(SignupDto signupDto) throws Exception {
+
+        if (isDuplicateMember(signupDto)){
+            throw  new Exception("중복된 email이 있습니다.");
+        }
+
         // SignupDto를 Members 엔티티로 변환합니다.
         Members member = modelMapper.map(signupDto, Members.class);
 
@@ -26,5 +31,10 @@ public class SignupService {
 
         // 회원 정보를 데이터베이스에 저장합니다.
         memberRepository.save(member);
+    }
+
+    //중복 회원 정보 확인 메서드
+    public boolean isDuplicateMember(SignupDto signupDto) {
+        return  memberRepository.existsByEmail(signupDto.getEmail());
     }
 }
