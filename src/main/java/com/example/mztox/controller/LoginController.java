@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @RequiredArgsConstructor // 생성자를 통해 의존성을 주입받기 위한 Lombok 어노테이션
 @RestController // 이 클래스가 RESTful 웹 서비스의 컨트롤러임을 나타냄
@@ -35,6 +34,7 @@ public class LoginController {
     @PostMapping("/login") // HTTP POST 요청을 "/login" 경로로 매핑
     public ResponseEntity<?> appLogin(@Valid @RequestBody LoginDto loginDto) {
         try {
+
             // 로그인 서비스로 로그인 시도
             AuthenticationDto authentication = loginService.loginService(loginDto);
 
@@ -43,6 +43,7 @@ public class LoginController {
 
             //최근 번역기록을 가져옴.
             TranslationResponse translations = translationService.getRecentTranslations(authentication.getEmail());
+
 
             // 응답 데이터 준비
             //Map
@@ -74,5 +75,7 @@ public class LoginController {
 //                    .body("Unexpected error occurred"); // 500 상태 코드와 일반 오류 메시지 반환
         }
     }
+
+
 
 }

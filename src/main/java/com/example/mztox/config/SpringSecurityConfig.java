@@ -62,7 +62,7 @@ public class SpringSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // CSRF 보호 비활성화
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // 세션 관리를 Stateless 방식으로 설정
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/signup", "/login/**", "/exception/**").permitAll() // 특정 경로에 대한 접근 허용
+                        .requestMatchers("/signup", "/login/**", "/exception/**", "/main/**", "/delete/**").permitAll() // 특정 경로에 대한 접근 허용
                         .anyRequest().hasRole("USER") // 그 외의 모든 요청은 USER 역할이 필요
                 )
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS 설정 적용

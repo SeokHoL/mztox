@@ -1,11 +1,17 @@
 package com.example.mztox.controller;
 
 
+import com.example.mztox.dto.DeleteMemberDto;
 import com.example.mztox.dto.SignupDto;
+import com.example.mztox.exception.UserNotFoundException;
 import com.example.mztox.service.SignupService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -35,9 +41,10 @@ public class SignupController {
             signupService.signup(signupDto);
             return ResponseEntity.ok().build();
         }catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"msg\": \"" + e.getMessage() + "\"}");
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body("{\"msg\": \"" + e.getMessage() + "\"}");
         }
-
         //ResponseEntity는 Spring Framework에서 제공하는 클래스이며,
         // HTTP 응답의 전체적인 구성을 나타내는 데 사용됩니다.
         // 이를 사용하면 상태 코드(200,401,403,500등), 헤더(header), 본문(body)을 포함하는 응답을 클라이언트에 반환할 수 있습니다.
@@ -59,7 +66,27 @@ public class SignupController {
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors); // HTTP 상태 코드 400 (Bad Request)와 함께 오류 메시지를 응답 본문으로 반환합니다.
     }
+    @DeleteMapping("/delete")
+    public ResponseEntity<ObjectNode> deleteMember(@Valid @RequestBody DeleteMemberDto deleteMemberDto) {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode jsonNode = mapper.createObjectNode();
+        try {
+            signupService.deleteMemberByEmailAndPassword(deleteMemberDto.getEmail(), deleteMemberDto.getPassword());
+            jsonNode.put("msg", "회원탈퇴가 정상적으로 처리 되었습니다.");
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(jsonNode);
+        } catch (UserNotFoundException e) {
+            jsonNode.put("msg", e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).contentType(MediaType.APPLICATION_JSON).body(jsonNode);
+        } catch (Exception e) {
+            jsonNode.put("msg", "예상치 못한 오류.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).contentType(MediaType.APPLICATION_JSON).body(jsonNode);
+        }
+    }
 }
+
+
+
+
 
 //    // 기타 예외 처리
 //    @ExceptionHandler(Exception.class)

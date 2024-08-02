@@ -1,6 +1,5 @@
 package com.example.mztox.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,4 +9,5 @@ public class TranslationItem {
 
     private String slang;
     private String standard;
+
 }
