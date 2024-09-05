@@ -1,10 +1,6 @@
-# <img src="img/ico_clbg.png" width="30" height="30"> Project MZtoX 
+# Project MZtoX 
 
-<div style="text-align: center;">
-    <a href="http://mztox.aikopo.net/">
-        <img src="img/MZTOX.png" />
-    </a>
-</div>
+
 
 ## 1. 프로젝트 소개
 
