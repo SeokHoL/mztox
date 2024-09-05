@@ -17,11 +17,10 @@ MZtoX 프로젝트는 신조어로 인한 언어 소통 문제를 해결하기 �
 ## 3. 개요
 - **프로젝트 이름**: MZtoX
 - **프로젝트 지속 기간**: 2024.07.01 ~ 2024.08.22
-- **서버 제공**: ![Naver Cloud](https://img.shields.io/badge/Naver%20Cloud-00A859?style=flat-square&logo=naver&logoColor=white)
-- **OS**: ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white)
-- **개발 언어**: ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white) ![Python](https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-- **개발 프레임워크**: ![Spring Boot](https://img.shields.io/badge/spring_boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white) ![Flask](https://img.shields.io/badge/flask-000000?style=flat-square&logo=flask&logoColor=white) ![Vue.js](https://img.shields.io/badge/vuejs-4FC08D?style=flat-square&logo=vue.js&logoColor=white) ![PyTorch](https://img.shields.io/badge/pytorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-- **서버**: ![Apache Tomcat](https://img.shields.io/badge/Apache%20Tomcat-F8DB2D?style=flat-square&logo=apachetomcat&logoColor=black) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white)
+
+- **개발 언어**: ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white) 
+- **개발 프레임워크**: ![Spring Boot](https://img.shields.io/badge/spring_boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white)
+- **서버**: ![Apache Tomcat](https://img.shields.io/badge/Apache%20Tomcat-F8DB2D?style=flat-square&logo=apachetomcat&logoColor=black)  ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white)
 
 ## 4. 구현 일정
 
